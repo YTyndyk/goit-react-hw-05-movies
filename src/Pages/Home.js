@@ -1,6 +1,6 @@
-import getTrending from 'components/ThemoviedbAPI.js/ThemoviedbAPI';
+import { getTrending } from 'themoviedbAPI.js/ThemoviedbAPI';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { MovieList } from 'components/MovieList/MovieList';
 const STATUS = {
   IDLE: 'idle',
   PENDING: 'panding',
@@ -29,21 +29,7 @@ const Home = () => {
   return (
     <div>
       <h1>Trending Today</h1>
-      {status === STATUS.RESOLVED && (
-        <ul>
-          {movies.map(({ title, id, name }) =>
-            title ? (
-              <li key={id}>
-                <Link to={`/movies/${id}`}>{title}</Link>
-              </li>
-            ) : (
-              <li key={id}>
-                <Link to={`/movies/${id}`}>{name}</Link>
-              </li>
-            )
-          )}
-        </ul>
-      )}
+      {status === STATUS.RESOLVED && <MovieList movies={movies} />}
     </div>
   );
 };
