@@ -13,13 +13,13 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState(STATUS.IDLE);
   const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     const query = searchParams.get('query');
     if (!query) return;
     setStatus(STATUS.PENDING);
     getMovieSearch(query)
       .then(movies => {
-        // console.log(movies.results);
         setMovies([...movies.results]);
         setStatus(STATUS.RESOLVED);
       })

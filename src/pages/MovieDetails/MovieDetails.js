@@ -1,14 +1,16 @@
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { getMovieById } from 'themoviedbAPI.js/ThemoviedbAPI';
 import { Container } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
-
   const { movieId } = useParams();
+  const location = useLocation();
+  console.log(location);
+
   useEffect(() => {
     getMovieById(movieId)
       .then(movie => {
@@ -20,10 +22,10 @@ const MovieDetails = () => {
   }, [movieId]);
   if (!movie) return;
 
-  const backdrop = `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${movie?.backdrop_path}`;
   return (
     <>
-      <Container backdrop_path={backdrop}>
+      <Container>
+        <Link to={location?.state?.from ?? '/'}>Go to back</Link>
         <MovieCard {...movie} />
         <ul>
           <li>
