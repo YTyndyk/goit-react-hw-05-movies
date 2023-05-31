@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Trending Today</h1>
+      <h1 style={{ marginLeft: 20 }}> Trending Today</h1>
       {status === STATUS.RESOLVED && <MovieList movies={movies} />}
     </div>
   );
