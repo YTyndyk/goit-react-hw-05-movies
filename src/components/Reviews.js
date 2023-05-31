@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { getMovieReviews } from 'themoviedbAPI.js/ThemoviedbAPI';
+import { getMovieReviews } from 'components/Services/themoviedbAPI.js/ThemoviedbAPI';
 import { ReviewsList } from './ReviewsList/ReviewsList';
 const { useParams } = require('react-router-dom');
 

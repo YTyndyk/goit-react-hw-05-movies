@@ -1,9 +1,10 @@
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
-import { getMovieById } from 'themoviedbAPI.js/ThemoviedbAPI';
+import { getMovieById } from 'components/Services/themoviedbAPI.js/ThemoviedbAPI';
 import { Container } from './MovieDetails.styled';
+import { MovieText } from 'components/MovieCard/MovieCard.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -25,18 +26,44 @@ const MovieDetails = () => {
   return (
     <>
       <Container>
-        <Link to={location?.state?.from ?? '/'}>Go to back</Link>
-        <MovieCard {...movie} />
+        <Link
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            fontWeight: 500,
+            margin: 10,
+            color: 'black',
+            textDecoration: 'none',
+          }}
+          to={location?.state?.from ?? '/'}
+        >
+          Go to back
+        </Link>
+        <MovieCard movie={movie} />
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link
+              style={{ textDecoration: 'none', fontSize: 26, color: 'inherit' }}
+              to="cast"
+            >
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link
+              style={{ textDecoration: 'none', fontSize: 26, color: 'inherit' }}
+              to="reviews"
+            >
+              Reviews
+            </Link>
           </li>
         </ul>
+        <MovieText>Additional information</MovieText>
       </Container>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

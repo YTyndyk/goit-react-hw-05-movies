@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMovieSearch } from '../themoviedbAPI.js/ThemoviedbAPI';
+import { getMovieSearch } from '../components/Services/themoviedbAPI.js/ThemoviedbAPI';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { useSearchParams } from 'react-router-dom';
 import { MovieList } from 'components/MovieList/MovieList';
@@ -35,6 +35,7 @@ const Movies = () => {
   return (
     <>
       <SearchForm onSubmit={onSubmit} />
+      {status === STATUS.PENDING && <p>Loading...</p>}
       {status === STATUS.RESOLVED && <MovieList movies={movies} />}
     </>
   );

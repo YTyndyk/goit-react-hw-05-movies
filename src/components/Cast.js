@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMovieCredits } from 'themoviedbAPI.js/ThemoviedbAPI';
+import { getMovieCredits } from 'components/Services/themoviedbAPI.js/ThemoviedbAPI';
 import { CreditList } from './CreditList/CreditList';
 
 const Cast = () => {

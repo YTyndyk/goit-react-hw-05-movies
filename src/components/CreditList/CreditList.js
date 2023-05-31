@@ -4,15 +4,13 @@ export const CreditList = ({ credits }) => {
   return (
     <ul
       style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 20,
+        paddingLeft: 20,
       }}
     >
-      {credits.map(({ cast_id, profile_path, original_name }) => (
+      {credits.map(({ cast_id, profile_path, original_name, character }) => (
         <li
           style={{
-            width: 100,
+            width: 150,
           }}
           key={cast_id}
         >
@@ -25,6 +23,7 @@ export const CreditList = ({ credits }) => {
             alt={original_name}
           />
           <p>{original_name}</p>
+          <p>Character: {character}</p>
         </li>
       ))}
     </ul>

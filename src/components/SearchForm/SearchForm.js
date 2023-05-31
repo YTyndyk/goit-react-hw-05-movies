@@ -1,3 +1,4 @@
+import { Input } from './SearchForm.styled';
 export const SearchForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -12,8 +13,10 @@ export const SearchForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="query" required />
-      <button type="submit">Search movie</button>
+      <Input type="text" name="query" required />
+      <button style={{ height: 31, fontSize: 20 }} type="submit">
+        Search movie
+      </button>
     </form>
   );
 };

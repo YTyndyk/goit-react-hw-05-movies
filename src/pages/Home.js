@@ -1,4 +1,4 @@
-import { getTrending } from 'themoviedbAPI.js/ThemoviedbAPI';
+import { getTrending } from 'components/Services/themoviedbAPI.js/ThemoviedbAPI';
 import { useState, useEffect } from 'react';
 import { MovieList } from 'components/MovieList/MovieList';
 const STATUS = {
@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1 style={{ marginLeft: 20 }}> Trending Today</h1>
+      <h1 style={{ fontSize: 30 }}> Trending Today</h1>
       {status === STATUS.RESOLVED && <MovieList movies={movies} />}
     </div>
   );
