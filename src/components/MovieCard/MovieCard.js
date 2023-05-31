@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Poster } from './MovieCard.styled';
 export const MovieCard = props => {
   // const [score, setScore] = useState(0);
