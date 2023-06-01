@@ -1,3 +1,4 @@
+import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import Home from 'pages/Home';
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );

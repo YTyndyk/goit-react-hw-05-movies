@@ -17,6 +17,7 @@ const Movies = () => {
   useEffect(() => {
     const query = searchParams.get('query');
     if (!query) return;
+
     setStatus(STATUS.PENDING);
     getMovieSearch(query)
       .then(movies => {
@@ -28,15 +29,19 @@ const Movies = () => {
         setStatus(STATUS.REJECTED);
       });
   }, [searchParams]);
+
   const onSubmit = query => {
     setSearchParams({ query });
   };
-
+  // if (movies.results === []) setStatus(STATUS.REJECTED);
   return (
     <>
       <SearchForm onSubmit={onSubmit} />
       {status === STATUS.PENDING && <p>Loading...</p>}
       {status === STATUS.RESOLVED && <MovieList movies={movies} />}
+      {status === STATUS.REJECTED && (
+        <b>Sorry, we don't have detailed information about this movie !!!</b>
+      )}
     </>
   );
 };
