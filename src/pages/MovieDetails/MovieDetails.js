@@ -1,5 +1,5 @@
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState, Suspense, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { getMovieById } from 'components/Services/themoviedbAPI.js/ThemoviedbAPI';
@@ -10,6 +10,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
+  const backLinkLocationRef = useRef(location?.state?.from ?? '/');
   console.log(location);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const MovieDetails = () => {
             color: 'black',
             textDecoration: 'none',
           }}
-          to={location?.state?.from ?? '/'}
+          to={backLinkLocationRef.current}
         >
           Go to back
         </Link>
